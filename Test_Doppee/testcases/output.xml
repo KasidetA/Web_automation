@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.13.0 on darwin)" generated="2024-10-14T22:40:23.140775" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="/Users/kasidet.a/Desktop/Robotframework/Test_Doppee/testcases/test.robot">
+<test id="s1-t1" name="Test Register" line="7">
+<kw name="Open website" owner="common" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-10-14T22:40:23.201477" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10268e3c0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-10-14T22:40:23.201334" elapsed="0.000159"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--start-maximized</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:23.201780" elapsed="0.000060"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:23.201900" elapsed="0.000049"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--window-size\=1920,1080</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:23.202000" elapsed="0.000054"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:23.202102" elapsed="0.000049"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-14T22:40:23.202574" level="INFO">Opening browser 'Chrome' to base url 'https://training-platform.doppio-tech.com/'.</msg>
+<arg>${link_url}</arg>
+<arg>${ui_setting['browser']}</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-10-14T22:40:23.202219" elapsed="22.537231"/>
+</kw>
+<arg>${url}</arg>
+<status status="PASS" start="2024-10-14T22:40:23.201112" elapsed="22.538544"/>
+</kw>
+<kw name="Generate new email" owner="common">
+<kw name="Split String" owner="String">
+<msg time="2024-10-14T22:40:45.740560" level="INFO">${parts} = ['k', 'gmail.com']</msg>
+<var>${parts}</var>
+<arg>${email}</arg>
+<arg>@</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.740416" elapsed="0.000166"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-14T22:40:45.741203" level="INFO">${mail_part} = k</msg>
+<var>${mail_part}</var>
+<arg>${parts[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.740696" elapsed="0.000524"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-14T22:40:45.741705" level="INFO">${domain_part} = gmail.com</msg>
+<var>${domain_part}</var>
+<arg>${parts[1]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.741316" elapsed="0.000405"/>
+</kw>
+<kw name="Generate random number" owner="common">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2024-10-14T22:40:45.742172" level="INFO">${random_number} = 224045</msg>
+<var>${random_number}</var>
+<arg>result_format=%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.742013" elapsed="0.000174"/>
+</kw>
+<return>
+<value>${random_number}</value>
+<status status="PASS" start="2024-10-14T22:40:45.742228" elapsed="0.000047"/>
+</return>
+<msg time="2024-10-14T22:40:45.742360" level="INFO">${random_number} = 224045</msg>
+<var>${random_number}</var>
+<status status="PASS" start="2024-10-14T22:40:45.741859" elapsed="0.000515"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-14T22:40:45.742567" level="INFO">${modified_email} = k224045@gmail.com</msg>
+<var>${modified_email}</var>
+<arg>${mail_part}${random_number}@${domain_part}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.742457" elapsed="0.000123"/>
+</kw>
+<kw name="Save modified email to YAML" owner="common">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-14T22:40:45.743014" level="INFO">${data} = {'email': 'k224045@gmail.com'}</msg>
+<var>${data}</var>
+<arg>email=${modified_email}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.742866" elapsed="0.000163"/>
+</kw>
+<kw name="Write YAML file" owner="common">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-10-14T22:40:45.743614" level="INFO">${yaml_str} = email: k224045@gmail.com
+</msg>
+<var>${yaml_str}</var>
+<arg>__import__('yaml').dump(${data})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.743286" elapsed="0.000344"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2024-10-14T22:40:45.745595" level="INFO" html="true">Created file '&lt;a href="file:///Users/kasidet.a/Desktop/Robotframework/Test_Doppee/resources/testdata/generated_email.yaml"&gt;/Users/kasidet.a/Desktop/Robotframework/Test_Doppee/resources/testdata/generated_email.yaml&lt;/a&gt;'.</msg>
+<arg>${file_name}</arg>
+<arg>${yaml_str}</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2024-10-14T22:40:45.743754" elapsed="0.001883"/>
+</kw>
+<arg>/Users/kasidet.a/Desktop/Robotframework/Test_Doppee/keywords/commons/../../resources/testdata/generated_email.yaml</arg>
+<arg>${data}</arg>
+<status status="PASS" start="2024-10-14T22:40:45.743123" elapsed="0.002561"/>
+</kw>
+<arg>${modified_email}</arg>
+<status status="PASS" start="2024-10-14T22:40:45.742687" elapsed="0.003033"/>
+</kw>
+<arg>${base_email}</arg>
+<status status="PASS" start="2024-10-14T22:40:45.740025" elapsed="0.005724"/>
+</kw>
+<kw name="Click user icon" owner="common">
+<kw name="Click when ready" owner="common">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2024-10-14T22:40:49.350423" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=129.0.6668.100)
+Stacktrace:
+0   chromedriver                        0x0000000105058274 cxxbridge1$str$ptr + 1907280
+1   chromedriver                        0x000000010505075c cxxbridge1$str$ptr + 1875768
+2   chromedriver                        0x0000000104c64260 cxxbridge1$string$len + 89488
+3   chromedriver                        0x0000000104c3f728 core::str::slice_error_fail::hbaf5d05fe3921cd2 + 3776
+4   chromedriver                        0x0000000104ccee8c cxxbridge1$string$len + 526780
+5   chromedriver                        0x0000000104ce2218 cxxbridge1$string$len + 605512
+6   chromedriver                        0x0000000104c9d12c cxxbridge1$string$len + 322652
+7   chromedriver                        0x0000000104c9dd7c cxxbridge1$string$len + 325804
+8   chromedriver                        0x0000000105020504 cxxbridge1$str$ptr + 1678560
+9   chromedriver                        0x0000000105024e6c cxxbridge1$str$ptr + 1697352
+10  chromedriver                        0x0000000105005618 cxxbridge1$str$ptr + 1568244
+11  chromedriver                        0x000000010502573c cxxbridge1$str$ptr + 1699608
+12  chromedriver                        0x0000000104ff6bbc cxxbridge1$str$ptr + 1508248
+13  chromedriver                        0x0000000105041854 cxxbridge1$str$ptr + 1814576
+14  chromedriver                        0x00000001050419ac cxxbridge1$str$ptr + 1814920
+15  chromedriver                        0x00000001050503fc cxxbridge1$str$ptr + 1874904
+16  libsystem_pthread.dylib             0x0000000186039f94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000186034d34 thread_start + 8
+</msg>
+<msg time="2024-10-14T22:40:49.350889" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=129.0.6668.100)
+Stacktrace:
+0   chromedriver                        0x0000000105058274 cxxbridge1$str$ptr + 1907280
+1   chromedriver                        0x000000010505075c cxxbridge1$str$ptr + 1875768
+2   chromedriver                        0x0000000104c64260 cxxbridge1$string$len + 89488
+3   chromedriver                        0x0000000104c3f728 core::str::slice_error_fail::hbaf5d05fe3921cd2 + 3776
+4   chromedriver                        0x0000000104ccee8c cxxbridge1$string$len + 526780
+5   chromedriver                        0x0000000104ce2218 cxxbridge1$string$len + 605512
+6   chromedriver                        0x0000000104c9d12c cxxbridge1$string$len + 322652
+7   chromedriver                        0x0000000104c9dd7c cxxbridge1$string$len + 325804
+8   chromedriver                        0x0000000105020504 cxxbridge1$str$ptr + 1678560
+9   chromedriver                        0x0000000105024e6c cxxbridge1$str$ptr + 1697352
+10  chromedriver                        0x0000000105005618 cxxbridge1$str$ptr + 1568244
+11  chromedriver                        0x000000010502573c cxxbridge1$str$ptr + 1699608
+12  chromedriver                        0x0000000104ff6bbc cxxbridge1$str$ptr + 1508248
+13  chromedriver                        0x0000000105041854 cxxbridge1$str$ptr + 1814576
+14  chromedriver                        0x00000001050419ac cxxbridge1$str$ptr + 1814920
+15  chromedriver                        0x00000001050503fc cxxbridge1$str$ptr + 1874904
+16  libsystem_pthread.dylib             0x0000000186039f94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000186034d34 thread_start + 8
+</msg>
+<arg>${element_path}</arg>
+<arg>${waiting_time}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2024-10-14T22:40:45.746317" elapsed="3.609836">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=129.0.6668.100)
+Stacktrace:
+0   chromedriver                        0x0000000105058274 cxxbridge1$str$ptr + 1907280
+1   chromedriver                        0x000000010505075c cxxbridge1$str$ptr + 1875768
+2   chromedriver                        0x0000000104c64260 cxxbridge1$string$len + 89488
+3   chromedriver                        0x0000000104c3f728 core::str::slice_error_fail::hbaf5d05fe3921cd2 + 3776
+4   chromedriver                        0x0000000104ccee8c cxxbridge1$string$len + 526780
+5   chromedriver                        0x0000000104ce2218 cxxbridge1$string$len + 605512
+6   chromedriver                        0x0000000104c9d12c cxxbridge1$string$len + 322652
+7   chromedriver                        0x0000000104c9dd7c cxxbridge1$string$len + 325804
+8   chromedriver                        0x0000000105020504 cxxbridge1$str$ptr + 1678560
+9   chromedriver                        0x0000000105024e6c cxxbridge1$str$ptr + 1697352
+10  chromedriver                        0x0000000105005618 cxxbridge1$str$ptr + 1568244
+11  chromedriver                        0x000000010502573c cxxbridge1$str$ptr + 1699608
+12  chromedriver                        0x0000000104ff6bbc cxxbridge1$str$ptr + 1508248
+13  chromedriver                        0x0000000105041854 cxxbridge1$str$ptr + 1814576
+14  chromedriver                        0x00000001050419ac cxxbridge1$str$ptr + 1814920
+15  chromedriver                        0x00000001050503fc cxxbridge1$str$ptr + 1874904
+16  libsystem_pthread.dylib             0x0000000186039f94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000186034d34 thread_start + 8
+</status>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${element_path}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-10-14T22:40:49.356429" elapsed="0.000033"/>
+</kw>
+<arg>${common_locator.user_icon}</arg>
+<status status="FAIL" start="2024-10-14T22:40:45.746129" elapsed="3.610509">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=129.0.6668.100)
+Stacktrace:
+0   chromedriver                        0x0000000105058274 cxxbridge1$str$ptr + 1907280
+1   chromedriver                        0x000000010505075c cxxbridge1$str$ptr + 1875768
+2   chromedriver                        0x0000000104c64260 cxxbridge1$string$len + 89488
+3   chromedriver                        0x0000000104c3f728 core::str::slice_error_fail::hbaf5d05fe3921cd2 + 3776
+4   chromedriver                        0x0000000104ccee8c cxxbridge1$string$len + 526780
+5   chromedriver                        0x0000000104ce2218 cxxbridge1$string$len + 605512
+6   chromedriver                        0x0000000104c9d12c cxxbridge1$string$len + 322652
+7   chromedriver                        0x0000000104c9dd7c cxxbridge1$string$len + 325804
+8   chromedriver                        0x0000000105020504 cxxbridge1$str$ptr + 1678560
+9   chromedriver                        0x0000000105024e6c cxxbridge1$str$ptr + 1697352
+10  chromedriver                        0x0000000105005618 cxxbridge1$str$ptr + 1568244
+11  chromedriver                        0x000000010502573c cxxbridge1$str$ptr + 1699608
+12  chromedriver                        0x0000000104ff6bbc cxxbridge1$str$ptr + 1508248
+13  chromedriver                        0x0000000105041854 cxxbridge1$str$ptr + 1814576
+14  chromedriver                        0x00000001050419ac cxxbridge1$str$ptr + 1814920
+15  chromedriver                        0x00000001050503fc cxxbridge1$str$ptr + 1874904
+16  libsystem_pthread.dylib             0x0000000186039f94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000186034d34 thread_start + 8
+</status>
+</kw>
+<status status="FAIL" start="2024-10-14T22:40:45.745882" elapsed="3.610868">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=129.0.6668.100)
+Stacktrace:
+0   chromedriver                        0x0000000105058274 cxxbridge1$str$ptr + 1907280
+1   chromedriver                        0x000000010505075c cxxbridge1$str$ptr + 1875768
+2   chromedriver                        0x0000000104c64260 cxxbridge1$string$len + 89488
+3   chromedriver                        0x0000000104c3f728 core::str::slice_error_fail::hbaf5d05fe3921cd2 + 3776
+4   chromedriver                        0x0000000104ccee8c cxxbridge1$string$len + 526780
+5   chromedriver                        0x0000000104ce2218 cxxbridge1$string$len + 605512
+6   chromedriver                        0x0000000104c9d12c cxxbridge1$string$len + 322652
+7   chromedriver                        0x0000000104c9dd7c cxxbridge1$string$len + 325804
+8   chromedriver                        0x0000000105020504 cxxbridge1$str$ptr + 1678560
+9   chromedriver                        0x0000000105024e6c cxxbridge1$str$ptr + 1697352
+10  chromedriver                        0x0000000105005618 cxxbridge1$str$ptr + 1568244
+11  chromedriver                        0x000000010502573c cxxbridge1$str$ptr + 1699608
+12  chromedriver                        0x0000000104ff6bbc cxxbridge1$str$ptr + 1508248
+13  chromedriver                        0x0000000105041854 cxxbridge1$str$ptr + 1814576
+14  chromedriver                        0x00000001050419ac cxxbridge1$str$ptr + 1814920
+15  chromedriver                        0x00000001050503fc cxxbridge1$str$ptr + 1874904
+16  libsystem_pthread.dylib             0x0000000186039f94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000186034d34 thread_start + 8
+</status>
+</kw>
+<kw name="Click sign up button" owner="log_in_page">
+<status status="NOT RUN" start="2024-10-14T22:40:49.356968" elapsed="0.000040"/>
+</kw>
+<kw name="Input register email" owner="register_page">
+<arg>${email}</arg>
+<status status="NOT RUN" start="2024-10-14T22:40:49.357252" elapsed="0.000034"/>
+</kw>
+<kw name="Input register password" owner="register_page">
+<arg>${user.password}</arg>
+<status status="NOT RUN" start="2024-10-14T22:40:49.357510" elapsed="0.000025"/>
+</kw>
+<kw name="Input confirm password" owner="register_page">
+<arg>${user.cf_password}</arg>
+<status status="NOT RUN" start="2024-10-14T22:40:49.357717" elapsed="0.000021"/>
+</kw>
+<kw name="Click submit button" owner="register_page">
+<status status="NOT RUN" start="2024-10-14T22:40:49.357869" elapsed="0.000019"/>
+</kw>
+<kw name="Close popup" owner="common">
+<status status="NOT RUN" start="2024-10-14T22:40:49.358008" elapsed="0.000019"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-10-14T22:40:49.358278" elapsed="0.078048"/>
+</kw>
+<tag>Register</tag>
+<status status="FAIL" start="2024-10-14T22:40:23.200777" elapsed="26.235643">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=129.0.6668.100)
+Stacktrace:
+0   chromedriver                        0x0000000105058274 cxxbridge1$str$ptr + 1907280
+1   chromedriver                        0x000000010505075c cxxbridge1$str$ptr + 1875768
+2   chromedriver                        0x0000000104c64260 cxxbridge1$string$len + 89488
+3   chromedriver                        0x0000000104c3f728 core::str::slice_error_fail::hbaf5d05fe3921cd2 + 3776
+4   chromedriver                        0x0000000104ccee8c cxxbridge1$string$len + 526780
+5   chromedriver                        0x0000000104ce2218 cxxbridge1$string$len + 605512
+6   chromedriver                        0x0000000104c9d12c cxxbridge1$string$len + 322652
+7   chromedriver                        0x0000000104c9dd7c cxxbridge1$string$len + 325804
+8   chromedriver                        0x0000000105020504 cxxbridge1$str$ptr + 1678560
+9   chromedriver                        0x0000000105024e6c cxxbridge1$str$ptr + 1697352
+10  chromedriver                        0x0000000105005618 cxxbridge1$str$ptr + 1568244
+11  chromedriver                        0x000000010502573c cxxbridge1$str$ptr + 1699608
+12  chromedriver                        0x0000000104ff6bbc cxxbridge1$str$ptr + 1508248
+13  chromedriver                        0x0000000105041854 cxxbridge1$str$ptr + 1814576
+14  chromedriver                        0x00000001050419ac cxxbridge1$str$ptr + 1814920
+15  chromedriver                        0x00000001050503fc cxxbridge1$str$ptr + 1874904
+16  libsystem_pthread.dylib             0x0000000186039f94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000186034d34 thread_start + 8
+</status>
+</test>
+<test id="s1-t2" name="Test Log in" line="18">
+<kw name="Open website" owner="common" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-10-14T22:40:49.437293" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x1026a6710&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-10-14T22:40:49.437144" elapsed="0.000163"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--start-maximized</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:49.437378" elapsed="0.000063"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:49.437495" elapsed="0.000042"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--window-size\=1920,1080</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:49.437587" elapsed="0.000055"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2024-10-14T22:40:49.437690" elapsed="0.000041"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-14T22:40:49.438195" level="INFO">Opening browser 'Chrome' to base url 'https://training-platform.doppio-tech.com/'.</msg>
+<msg time="2024-10-14T22:40:51.621797" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1026a74d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef/screenshot</msg>
+<msg time="2024-10-14T22:40:51.622422" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10267b950&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef/screenshot</msg>
+<msg time="2024-10-14T22:40:51.622941" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10267b5c0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef/screenshot</msg>
+<msg time="2024-10-14T22:40:51.623412" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: HTTPConnectionPool(host='localhost', port=51163): Max retries exceeded with url: /session/c15840318cb79cc44f15efda361fecef/screenshot (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1026f95b0&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</msg>
+<msg time="2024-10-14T22:40:51.623536" level="FAIL">ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</msg>
+<arg>${link_url}</arg>
+<arg>${ui_setting['browser']}</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="FAIL" start="2024-10-14T22:40:49.437803" elapsed="2.192881">ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</status>
+</kw>
+<arg>${url}</arg>
+<status status="FAIL" start="2024-10-14T22:40:49.436966" elapsed="2.193856">ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2024-10-14T22:40:51.632020" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1025d3570&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef</msg>
+<msg time="2024-10-14T22:40:51.632658" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1025d3790&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef</msg>
+<msg time="2024-10-14T22:40:51.633297" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1025d2e00&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef</msg>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-10-14T22:40:51.631200" elapsed="0.002940"/>
+</kw>
+<tag>Login</tag>
+<status status="FAIL" start="2024-10-14T22:40:49.436736" elapsed="2.197461">Setup failed:
+ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</status>
+</test>
+<status status="FAIL" start="2024-10-14T22:40:23.141584" elapsed="28.492935"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">Login</stat>
+<stat pass="0" fail="1" skip="0">Register</stat>
+</tag>
+<suite>
+<stat pass="0" fail="2" skip="0" id="s1" name="Test">Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-10-14T22:40:49.350423" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=129.0.6668.100)
+Stacktrace:
+0   chromedriver                        0x0000000105058274 cxxbridge1$str$ptr + 1907280
+1   chromedriver                        0x000000010505075c cxxbridge1$str$ptr + 1875768
+2   chromedriver                        0x0000000104c64260 cxxbridge1$string$len + 89488
+3   chromedriver                        0x0000000104c3f728 core::str::slice_error_fail::hbaf5d05fe3921cd2 + 3776
+4   chromedriver                        0x0000000104ccee8c cxxbridge1$string$len + 526780
+5   chromedriver                        0x0000000104ce2218 cxxbridge1$string$len + 605512
+6   chromedriver                        0x0000000104c9d12c cxxbridge1$string$len + 322652
+7   chromedriver                        0x0000000104c9dd7c cxxbridge1$string$len + 325804
+8   chromedriver                        0x0000000105020504 cxxbridge1$str$ptr + 1678560
+9   chromedriver                        0x0000000105024e6c cxxbridge1$str$ptr + 1697352
+10  chromedriver                        0x0000000105005618 cxxbridge1$str$ptr + 1568244
+11  chromedriver                        0x000000010502573c cxxbridge1$str$ptr + 1699608
+12  chromedriver                        0x0000000104ff6bbc cxxbridge1$str$ptr + 1508248
+13  chromedriver                        0x0000000105041854 cxxbridge1$str$ptr + 1814576
+14  chromedriver                        0x00000001050419ac cxxbridge1$str$ptr + 1814920
+15  chromedriver                        0x00000001050503fc cxxbridge1$str$ptr + 1874904
+16  libsystem_pthread.dylib             0x0000000186039f94 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000186034d34 thread_start + 8
+</msg>
+<msg time="2024-10-14T22:40:51.621797" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1026a74d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef/screenshot</msg>
+<msg time="2024-10-14T22:40:51.622422" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10267b950&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef/screenshot</msg>
+<msg time="2024-10-14T22:40:51.622941" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10267b5c0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef/screenshot</msg>
+<msg time="2024-10-14T22:40:51.623412" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: HTTPConnectionPool(host='localhost', port=51163): Max retries exceeded with url: /session/c15840318cb79cc44f15efda361fecef/screenshot (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1026f95b0&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</msg>
+<msg time="2024-10-14T22:40:51.632020" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1025d3570&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef</msg>
+<msg time="2024-10-14T22:40:51.632658" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1025d3790&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef</msg>
+<msg time="2024-10-14T22:40:51.633297" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x1025d2e00&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/c15840318cb79cc44f15efda361fecef</msg>
+</errors>
+</robot>

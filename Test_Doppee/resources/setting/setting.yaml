@@ -1,0 +1,6 @@
+url:  https://training-platform.doppio-tech.com/
+
+ui_setting:
+  browser: Chrome
+
+waiting_time: 10s
