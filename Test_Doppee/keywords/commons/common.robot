@@ -21,6 +21,7 @@ Close popup
     common.Click when ready              ${popup_locator.ok_btn}
 
 Input text when ready
+    [Arguments]         ${element_path}         ${input_text}
     SeleniumLibrary.wait until element is visible       ${element_path}     ${waiting_time}
     SeleniumLibrary.input text                          ${element_path}     ${input_text}
 

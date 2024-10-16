@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ${CURDIR}/../resources/setting/import.robot
+Resource    ${CURDIR}/../resources/import.robot
 Test Setup      common.Open website         ${url}
 Test Teardown   SeleniumLibrary.Close Browser
 
